@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
-import 'package:notes_app/widgets/custom_notes_item.dart';
+import 'package:notes_app/widgets/custom_list_view.dart';
 
 class NotesAppHomePage extends StatelessWidget {
   const NotesAppHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
       body: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 24,
         ),
         child: Column(
           children: [
-            CustomAppBar(),
-            CustomNotesItem(),
+            const CustomAppBar(),
+            const Expanded(
+              child: NotesListView(),
+            ),
           ],
         ),
       ),

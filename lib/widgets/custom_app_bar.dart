@@ -7,12 +7,9 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 40),
+      padding: EdgeInsets.only(top: 70),
       child: Row(
         children: [
-          SizedBox(
-            height: 100,
-          ),
           Text(
             'Notes',
             style: TextStyle(
