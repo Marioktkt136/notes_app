@@ -10,10 +10,14 @@ class CustomAppBar extends StatelessWidget {
       padding: EdgeInsets.only(top: 70),
       child: Row(
         children: [
+          SizedBox(
+              // width: 24,
+              // height: 70,
+              ),
           Text(
             'Notes',
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 30,
             ),
           ),
