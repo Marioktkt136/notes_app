@@ -1,3 +1,4 @@
 import 'package:flutter/material.dart';
 
-Color KPrimaryColor = const Color(0xff26F3EE);
+Color kPrimaryColor = const Color(0xff26F3EE);
+String kNotesBox = 'Notes_box';

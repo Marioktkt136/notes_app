@@ -9,7 +9,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: KPrimaryColor,
+          color: kPrimaryColor,
           boxShadow: const [
             BoxShadow(
               color: Colors.black45,
