@@ -30,7 +30,7 @@ class NotesListView extends StatelessWidget {
               itemColor = data[index % data.length];
             }
             return Padding(
-              padding: EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.only(bottom: 8),
               child: CustomNotesItem(
                 itemColor: itemColor,
               ),
