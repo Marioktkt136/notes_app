@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget {
           Text(
             'Notes',
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 30,
             ),
           ),
