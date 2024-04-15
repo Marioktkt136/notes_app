@@ -4,14 +4,9 @@ import 'package:notes_app/cubits/notes/notes_cubit.dart';
 import 'package:notes_app/widgets/add_show_model_bottom_sheet.dart';
 import 'package:notes_app/widgets/notes_view_body.dart';
 
-class NotesAppHomePage extends StatefulWidget {
+class NotesAppHomePage extends StatelessWidget {
   const NotesAppHomePage({super.key});
 
-  @override
-  State<NotesAppHomePage> createState() => _NotesAppHomePageState();
-}
-
-class _NotesAppHomePageState extends State<NotesAppHomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
