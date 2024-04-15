@@ -16,7 +16,7 @@ class NotesAppHomePage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           elevation: 30,
           splashColor: Colors.blue.withOpacity(0.4),
-          backgroundColor: Colors.green.withOpacity(1),
+          backgroundColor: Colors.green.withOpacity(0.8),
           hoverColor: Colors.blueAccent.withOpacity(0.4),
           onPressed: () {
             showModalBottomSheet(
