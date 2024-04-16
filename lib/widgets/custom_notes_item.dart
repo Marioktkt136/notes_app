@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/cubits/notes/notes_cubit.dart';
@@ -26,7 +27,7 @@ class CustomNotesItem extends StatelessWidget {
         );
       },
       child: Container(
-        padding: const EdgeInsets.only(left: 24, top: 16, bottom: 16),
+        padding: const EdgeInsets.only(left: 24, top: 8, bottom: 16),
         decoration: BoxDecoration(
           color: itemColor,
           borderRadius: BorderRadius.circular(16),
@@ -36,20 +37,25 @@ class CustomNotesItem extends StatelessWidget {
           children: [
             ListTile(
               title: Text(
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 note.title,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 35,
+                  fontSize: 33,
                   fontWeight: FontWeight.w400,
                 ),
               ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.only(top: 8),
                 child: Text(
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.start,
                   note.subTitle,
                   style: TextStyle(
                     color: Colors.black.withOpacity(.5),
-                    fontSize: 25,
+                    fontSize: 22,
                   ),
                 ),
               ),
