@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/error_loges_page.dart';
 import 'package:notes_app/widgets/custom_search_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -13,10 +14,26 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsets.only(top: 70),
       child: Row(
         children: [
-          const SizedBox(
-              // width: 24,
-              // height: 70,
+          PopupMenuButton(itemBuilder: (context) {
+            return [
+              PopupMenuItem(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const ErrorLogsPage();
+                      },
+                    ),
+                  );
+                },
+                value: 1,
+                child: const Text(
+                  'Error Logs',
+                ),
               ),
+            ];
+          }),
           Text(
             title,
             style: const TextStyle(

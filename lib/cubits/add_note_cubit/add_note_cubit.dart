@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:meta/meta.dart';
 import 'package:notes_app/constants.dart';
+import 'package:notes_app/models/error_model.dart';
 import 'package:notes_app/models/note_model.dart';
 
 part 'add_note_state.dart';
@@ -16,6 +17,13 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       await notesBox.add(note);
       emit(AddNoteSuccess());
     } catch (e) {
+      var errorsBox = Hive.box<ErrorModel>(kErrorsBox);
+      await errorsBox.add(ErrorModel(
+        errMessage: e.toString(),
+        fnName: 'addNote',
+        date: DateTime.now().toString(),
+        userName: 'User',
+      ));
       emit(AddNoteFailure(e.toString()));
     }
   }
