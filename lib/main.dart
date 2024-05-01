@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constants.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:notes_app/cubits/notes/notes_cubit.dart';
 import 'package:notes_app/models/error_model.dart';
+=======
+>>>>>>> parent of 211a79f (refresh notes list)
 =======
 >>>>>>> parent of 211a79f (refresh notes list)
 import 'package:notes_app/models/note_model.dart';
