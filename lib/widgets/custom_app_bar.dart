@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/errors/errors_cubit.dart';
 import 'package:notes_app/views/error_loges_page.dart';
 import 'package:notes_app/widgets/custom_search_icon.dart';
 
@@ -26,6 +28,7 @@ class CustomAppBar extends StatelessWidget {
                       },
                     ),
                   );
+                  BlocProvider.of<ErrorCubit>(context).getErrorLogs();
                 },
                 value: 1,
                 child: const Text(

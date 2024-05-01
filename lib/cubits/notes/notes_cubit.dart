@@ -14,14 +14,20 @@ class NotesCubit extends Cubit<NotesCubitState> {
   List<ErrorModel>? errors;
   fetchAllNotes() async {
     emit(NotesLoading());
-    try {
-      var notesBox = Hive.box<NoteModel>(kNotesBox);
+      try{
+        var notesBox = Hive.box<NoteModel>(kNotesBox);
       notes = notesBox.values.toList();
       emit(NotesSuccess());
-    } catch (e) {
-      var errorsBox = Hive.box<ErrorModel>(kErrorsBox);
-      errors = errorsBox.values.toList();
-      emit(NotesFailure(e.toString()));
-    }
+      }
+      catch(e){
+        var errorsBox = Hive.box<ErrorModel>(kErrorsBox);
+       await errorsBox.add(ErrorModel(
+          errMessage: 'there is message at fetch messages ',
+          fnName: 'fetchAllNotes',
+          date: DateTime.now().toString(),
+          userName: 'Mario',
+       ));
+        emit(NotesFailure(e.toString()));
+      }
   }
 }

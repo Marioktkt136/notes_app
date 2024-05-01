@@ -17,5 +17,5 @@ class ErrorModel extends HiveObject {
       {required this.errMessage,
       required this.fnName,
       required this.date,
-      required this.userName});
+      required this.userName,});
 }
