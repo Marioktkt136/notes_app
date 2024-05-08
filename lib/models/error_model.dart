@@ -5,13 +5,13 @@ part 'error_model.g.dart';
 @HiveType(typeId: 1)
 class ErrorModel extends HiveObject {
   @HiveField(0)
-  final String errMessage;
+   String? errMessage;
   @HiveField(1)
-  final String fnName;
+   String? fnName;
   @HiveField(2)
-  final String date;
+   String? date;
   @HiveField(3)
-  final String userName;
+   String? userName;
 
   ErrorModel(
       {required this.errMessage,

@@ -16,7 +16,7 @@ void main() async {
   await Hive.openBox<NoteModel>(kNotesBox);
   // Hive to Errors
   Hive.registerAdapter(ErrorModelAdapter());
-  await Hive.openBox<NoteModel>(kErrorsBox);
+  await Hive.openBox<ErrorModel>(kErrorsBox);
 
   Bloc.observer = SimpleBlocObserver();
   runApp( const NotesApp());

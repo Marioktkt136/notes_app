@@ -17,6 +17,7 @@ class NotesCubit extends Cubit<NotesCubitState> {
       try{
         var notesBox = Hive.box<NoteModel>(kNotesBox);
       notes = notesBox.values.toList();
+      throw  Exception('This is my first custom exception');
       emit(NotesSuccess());
       }
       catch(e){

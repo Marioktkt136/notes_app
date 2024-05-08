@@ -30,8 +30,8 @@ class CustomErrorsItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title:  Text(
-               BlocProvider.of<ErrorCubit>(context).errorModel!.fnName,
+              title: Text(
+               BlocProvider.of<ErrorCubit>(context).errorModel!.userName!,
                 style:  const TextStyle(
                   color: Colors.white70,
                   fontSize: 25,
@@ -41,7 +41,7 @@ class CustomErrorsItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  BlocProvider.of<ErrorCubit>(context).errorModel!.errMessage,
+                  BlocProvider.of<ErrorCubit>(context).errorModel!.errMessage!,
                   style: const TextStyle(
                   color: Colors.white70,
                     fontSize: 15,
