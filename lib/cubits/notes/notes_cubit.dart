@@ -4,11 +4,13 @@ import 'package:meta/meta.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/models/error_model.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/sqlDb.dart';
 
 part 'notes_state.dart';
 
 class NotesCubit extends Cubit<NotesCubitState> {
   NotesCubit() : super(NotesInitial());
+    SqlDb  sqlDb = SqlDb();
 
   List<NoteModel>? notes;
   List<ErrorModel>? errors;
@@ -21,14 +23,10 @@ class NotesCubit extends Cubit<NotesCubitState> {
       emit(NotesSuccess());
       }
       catch(e){
-        var errorsBox = Hive.box<ErrorModel>(kErrorsBox);
-       await errorsBox.add(ErrorModel(
-          errMessage: 'there is message at fetch messages ',
-          fnName: 'fetchAllNotes',
-          date: DateTime.now().toString(),
-          userName: 'Mario',
-       ));
-        emit(NotesFailure(e.toString()));
+      // int response = await sqlDb.insertData("INSERT INTO notes ('userName', 'fnName', 'errMessage') VALUES ('MARIO', 'fetchAllNotes', 'Exception'");
+       int response = await sqlDb.insertData('INSERT INTO notes (userName, fnName, errMessage) VALUES ("MARIO", "fetchAllNotes", "Exception")');
+
+            print(response);
       }
   }
 }

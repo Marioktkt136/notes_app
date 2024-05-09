@@ -1,16 +1,8 @@
-import 'package:hive_flutter/adapters.dart';
+class ErrorModel {
 
-part 'error_model.g.dart';
-
-@HiveType(typeId: 1)
-class ErrorModel extends HiveObject {
-  @HiveField(0)
    String? errMessage;
-  @HiveField(1)
    String? fnName;
-  @HiveField(2)
    String? date;
-  @HiveField(3)
    String? userName;
 
   ErrorModel(
@@ -18,4 +10,6 @@ class ErrorModel extends HiveObject {
       required this.fnName,
       required this.date,
       required this.userName,});
+
+  static fromJson(Map e) {}
 }

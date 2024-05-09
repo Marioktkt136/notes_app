@@ -4,7 +4,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/errors/errors_cubit.dart';
 import 'package:notes_app/cubits/notes/notes_cubit.dart';
-import 'package:notes_app/models/error_model.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/notes_app_home_page.dart';
@@ -15,9 +14,6 @@ void main() async {
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox);
   // Hive to Errors
-  Hive.registerAdapter(ErrorModelAdapter());
-  await Hive.openBox<ErrorModel>(kErrorsBox);
-
   Bloc.observer = SimpleBlocObserver();
   runApp( const NotesApp());
 }
@@ -32,7 +28,9 @@ class NotesApp extends StatelessWidget {
         BlocProvider(
         create: (context) => NotesCubit(),
       ),
-      BlocProvider(create: (context) => ErrorCubit(),),
+      BlocProvider(
+        create: (context) => ErrorCubit()
+      ),
 
       ],
       
