@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:notes_app/cubits/notes/notes_cubit.dart';
-import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/views/edit_note_page.dart';
+import 'package:notes_app/cubits/errors/errors_cubit.dart';
+import 'package:notes_app/models/error_model.dart';
 
-class CustomNotesItem extends StatelessWidget {
-  const CustomNotesItem(
-      {super.key, required this.itemColor, required this.note});
-  final Color itemColor;
-  final NoteModel note;
+class CustomErrorsItem extends StatelessWidget {
+  const CustomErrorsItem(
+      {super.key});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,9 +16,7 @@ class CustomNotesItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-                return EditNoteView(
-                note: note,
-              );
+            return Container() ;
             },
           ),
         );
@@ -28,7 +24,7 @@ class CustomNotesItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(left: 24, top: 16, bottom: 16),
         decoration: BoxDecoration(
-          color: itemColor,
+          color: Colors.white10,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -36,31 +32,30 @@ class CustomNotesItem extends StatelessWidget {
           children: [
             ListTile(
               title: Text(
-                note.title,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 35,
+               BlocProvider.of<ErrorCubit>(context).errorModel?.userName ?? 'ss',
+                style:  const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 25,
                   fontWeight: FontWeight.w400,
                 ),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  note.subTitle,
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(.5),
-                    fontSize: 25,
+               BlocProvider.of<ErrorCubit>(context).errorModel?.fnName ?? 'ss',
+
+                  style: const TextStyle(
+                  color: Colors.white70,
+                    fontSize: 15,
                   ),
                 ),
               ),
               trailing: IconButton(
                 onPressed: () {
-                  note.delete();
-                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 },
                 icon: const Icon(
                   FontAwesomeIcons.trash,
-                  color: Colors.black,
+                  color: Colors.white70,
                   size: 30,
                 ),
               ),
@@ -71,9 +66,9 @@ class CustomNotesItem extends StatelessWidget {
               ),
               child: Text(
                 textAlign: TextAlign.end,
-                note.date,
-                style: TextStyle(
-                  color: Colors.black.withOpacity(.7),
+               BlocProvider.of<ErrorCubit>(context).errorModel?.errMessage ?? 'ss',
+                style: const TextStyle(
+                  color: Colors.white70,
                   fontSize: 15,
                 ),
               ),
