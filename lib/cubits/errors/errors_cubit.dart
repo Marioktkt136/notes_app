@@ -8,13 +8,22 @@ class ErrorCubit extends Cubit<ErrorsLogsState>{
   List<ErrorModel>? errors;
   ErrorModel? errorModel;
   SqlDb  sqlDb = SqlDb();
-
+  List<Map> response= [];
   void getErrorLogs()async{
     emit(ErrorLogsLoading());
-    List<Map> response = await sqlDb.readData(''' 
-    "SELECT * FROM 'notes'"
-    ''');
-    errors = response.map((e) => ErrorModel.fromJson(e)).cast<ErrorModel>().toList();
+     response = await sqlDb.readData(
+      ''' 
+      SELECT * FROM notes
+      ''');
+
+  print('SELECT============');
     emit(ErrorLogsSuccess());
+  }
+
+  void deleteAllLogs() async{
+    emit(ErrorLogsLoading());
+    int response = await sqlDb.deleteData('DELETE FROM notes');
+    emit(ErrorLogsSuccess());
+    print('DELETE ALL============ $response'); 
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/cubits/errors/errors_cubit.dart';
+import 'package:notes_app/models/error_model.dart';
 
 class CustomErrorsItem extends StatelessWidget {
   const CustomErrorsItem(
@@ -31,7 +32,7 @@ class CustomErrorsItem extends StatelessWidget {
           children: [
             ListTile(
               title: Text(
-               BlocProvider.of<ErrorCubit>(context).errorModel!.userName!,
+               BlocProvider.of<ErrorCubit>(context).errorModel?.userName ?? 'ss',
                 style:  const TextStyle(
                   color: Colors.white70,
                   fontSize: 25,
@@ -41,7 +42,8 @@ class CustomErrorsItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  BlocProvider.of<ErrorCubit>(context).errorModel!.errMessage!,
+               BlocProvider.of<ErrorCubit>(context).errorModel?.fnName ?? 'ss',
+
                   style: const TextStyle(
                   color: Colors.white70,
                     fontSize: 15,
@@ -64,7 +66,7 @@ class CustomErrorsItem extends StatelessWidget {
               ),
               child: Text(
                 textAlign: TextAlign.end,
-                BlocProvider.of<ErrorCubit>(context).errorModel!.date.toString(),
+               BlocProvider.of<ErrorCubit>(context).errorModel?.errMessage ?? 'ss',
                 style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 15,

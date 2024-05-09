@@ -10,7 +10,8 @@ part 'notes_state.dart';
 
 class NotesCubit extends Cubit<NotesCubitState> {
   NotesCubit() : super(NotesInitial());
-    SqlDb  sqlDb = SqlDb();
+  SqlDb  sqlDb = SqlDb();
+  String formattedDate = DateTime.now().toIso8601String();    
 
   List<NoteModel>? notes;
   List<ErrorModel>? errors;
@@ -23,10 +24,11 @@ class NotesCubit extends Cubit<NotesCubitState> {
       emit(NotesSuccess());
       }
       catch(e){
-      // int response = await sqlDb.insertData("INSERT INTO notes ('userName', 'fnName', 'errMessage') VALUES ('MARIO', 'fetchAllNotes', 'Exception'");
-       int response = await sqlDb.insertData('INSERT INTO notes (userName, fnName, errMessage) VALUES ("MARIO", "fetchAllNotes", "Exception")');
-
-            print(response);
+       int response = await sqlDb.insertData('''
+        INSERT INTO notes (userName, fnName, errMessage, createdAt) 
+        VALUES ("MARIO", "fetchAllNotes", "Exception", "$formattedDate")
+        ''');
+       print("insert at fetchAllNotes function and this is response = $response");
       }
   }
 }

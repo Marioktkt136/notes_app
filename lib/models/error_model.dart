@@ -11,5 +11,4 @@ class ErrorModel {
       required this.date,
       required this.userName,});
 
-  static fromJson(Map e) {}
 }

@@ -14,7 +14,7 @@ class SqlDb{
 initialDb() async{
   String dataBasePath = await getDatabasesPath();
   String path = join(dataBasePath,'Notes.DB');
-  Database myDb = await openDatabase(path,onCreate: _onCreate , version: 4 , onUpgrade: _onUpgrade);
+  Database myDb = await openDatabase(path,onCreate: _onCreate , version: 8 , onUpgrade: _onUpgrade);
   return myDb;
 }
 _onUpgrade(Database db , int oldVersion, int newVersion){
@@ -23,24 +23,29 @@ _onUpgrade(Database db , int oldVersion, int newVersion){
   print("onUpgrade =================================");
 }
 
-// _onCreate(Database db , int version)async{
-// await db.execute('''
-
-// CREATE TABLE 'notes' (
-//   "id" INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-//   "userName" TEXT NOT NULL,
-//   "fnName" TEXT NOT NULL,
-//   "date" TEXT NOT NULL,
-//   "errMessage" TEXT NOT NULL,
-// )
-
-// ''');
-// print("_onCreate ===========================");
-// }
 
 _onCreate(Database db , int version)async{
 await db.execute(
-"CREATE TABLE notes (id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,userName TEXT NOT NULL,fnName TEXT NOT NULL, date TEXT NOT NULL, errMessage TEXT NOT NULL)");
+// '''
+// CREATE TABLE notes (
+//   id INTEGER PRIMARY KEY AUTOINCREMENT,
+//   userName TEXT NOT NULL,
+//   fnName TEXT NOT NULL,
+//   errMessage TEXT NOT NULL,
+//   createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+//   )
+// ''');
+
+'''
+CREATE TABLE notes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  userName TEXT NOT NULL,
+  fnName TEXT NOT NULL,
+  errMessage TEXT NOT NULL,
+  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)
+'''
+);
 print("_onCreate ===========================");
 }
 

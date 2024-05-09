@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/cubits/errors/errors_cubit.dart';
 import 'package:notes_app/widgets/custom_search_icon.dart';
 
 class CustomAppBarForErrorPage extends StatelessWidget {
@@ -20,6 +21,9 @@ class CustomAppBarForErrorPage extends StatelessWidget {
               fontSize: 30,
             ),
           ),
+          IconButton(onPressed:(){
+            ErrorCubit().deleteAllLogs();
+          }, icon: Icon(Icons.delete)),
           const Spacer(),
           CustomSearchIcon(
             onPressed: onPressed,
